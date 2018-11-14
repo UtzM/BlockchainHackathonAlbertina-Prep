@@ -8,18 +8,148 @@ $(function () {
     console.log("Device wallet address: " + deviceWallet);
 
     // The Contract interface
-    let abi = [
-        "event ValueChanged(address indexed author, string oldValue, string newValue)",
-        "constructor(string value)",
-        "function getValue() view returns (string value)",
-        "function setValue(string value)"
+    const abi = [
+        {
+            "constant": true,
+            "inputs": [],
+            "name": "totalSupply_",
+            "outputs": [
+                {
+                    "name": "",
+                    "type": "uint256"
+                }
+            ],
+            "payable": false,
+            "stateMutability": "view",
+            "type": "function"
+        },
+        {
+            "constant": true,
+            "inputs": [],
+            "name": "lsw",
+            "outputs": [
+                {
+                    "name": "",
+                    "type": "address"
+                }
+            ],
+            "payable": false,
+            "stateMutability": "view",
+            "type": "function"
+        },
+        {
+            "constant": true,
+            "inputs": [],
+            "name": "owner",
+            "outputs": [
+                {
+                    "name": "",
+                    "type": "address"
+                }
+            ],
+            "payable": false,
+            "stateMutability": "view",
+            "type": "function"
+        },
+        {
+            "constant": false,
+            "inputs": [
+                {
+                    "name": "currentConsumption",
+                    "type": "uint256"
+                }
+            ],
+            "name": "updateConsumption",
+            "outputs": [],
+            "payable": false,
+            "stateMutability": "nonpayable",
+            "type": "function"
+        },
+        {
+            "constant": false,
+            "inputs": [
+                {
+                    "name": "_to",
+                    "type": "address"
+                },
+                {
+                    "name": "_value",
+                    "type": "uint256"
+                }
+            ],
+            "name": "transfer",
+            "outputs": [
+                {
+                    "name": "",
+                    "type": "bool"
+                }
+            ],
+            "payable": false,
+            "stateMutability": "nonpayable",
+            "type": "function"
+        },
+        {
+            "inputs": [
+                {
+                    "name": "_lsw",
+                    "type": "address"
+                }
+            ],
+            "payable": false,
+            "stateMutability": "nonpayable",
+            "type": "constructor"
+        },
+        {
+            "anonymous": false,
+            "inputs": [
+                {
+                    "indexed": true,
+                    "name": "sourceSocket",
+                    "type": "address"
+                },
+                {
+                    "indexed": false,
+                    "name": "consumption",
+                    "type": "uint256"
+                },
+                {
+                    "indexed": false,
+                    "name": "balance",
+                    "type": "uint256"
+                }
+            ],
+            "name": "PowerConsumption",
+            "type": "event"
+        },
+        {
+            "anonymous": false,
+            "inputs": [
+                {
+                    "indexed": true,
+                    "name": "from",
+                    "type": "address"
+                },
+                {
+                    "indexed": true,
+                    "name": "to",
+                    "type": "address"
+                },
+                {
+                    "indexed": false,
+                    "name": "value",
+                    "type": "uint256"
+                }
+            ],
+            "name": "Transfer",
+            "type": "event"
+        }
     ];
 
     // Connect to the network
     let provider = new ethers.providers.JsonRpcProvider("http://localhost:8545");
 
     // The address from the above deployment example
-    let contractAddress = "0x2bD9aAa2953F988153c8629926D22A6a5F69b14E";
+    let contractAddress = "0x871749bFe9B225A728c6A83C8595550d2142952A";
 
     // We connect to the Contract using a Provider, so we will only
     // have read-only access to the Contract
