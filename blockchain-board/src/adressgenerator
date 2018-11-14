@@ -1,0 +1,7 @@
+function getKeys(string uid) {
+  var keys = {
+        address:getAddress(uid),
+        privateKey:getKey(uid)
+  }
+  return keys;
+}
