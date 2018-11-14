@@ -1,11 +1,7 @@
-import subprocess
-
 import web3
 from web3.auto import w3
 
-
-def _load_config():
-    subprocess.call(["bash", "config.sh"])
+import os
 
 
 def _check_connection():
@@ -217,7 +213,7 @@ class LWallet:
 
 
 if __name__ == '__main__':
-    _load_config()
+    os.environ['WEB3_PROVIDER_URI'] = "ws://127.0.0.1:8546"
 
     l = LWallet()
 
