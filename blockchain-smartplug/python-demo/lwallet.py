@@ -2,7 +2,7 @@ from web3 import Web3
 
 import os
 
-my_provider = Web3.IPCProvider("http://localhost:8545")
+my_provider = Web3.HTTPProvider("http://localhost:8545")
 w3 = Web3(my_provider)
 
 def _check_connection():
