@@ -185,6 +185,8 @@ $(function () {
 
     // Connect to the network
     let provider = new ethers.providers.JsonRpcProvider("http://localhost:8545");
+    let signer = provider.getSigner(deviceAddress);
+    debugger;
 
     // The address from the above deployment example
     let contractAddress = "0x78b3D69911fE61FD7FcdB869B79449175832422E";
