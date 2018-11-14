@@ -193,18 +193,30 @@ $(function () {
     // have read-only access to the Contract
     let contract = new ethers.Contract(contractAddress, abi, provider);
 
+    $("#update-button").click(function () {
+        updateConsumption(11, contract).then(value => {
+            log.info("Updated");
+            log.info(value);
+            debugger;
+        });
+    });
+
     getConsumption(deviceAddress, contract).then(value => {
         console.log(value);
         $("#energyConsumptionContainer").text(value);
     });
 
-    $("#refresh-button").click(function(){
+    $("#refresh-button").click(function () {
         getConsumption(deviceAddress, contract).then(value => {
             console.log(value);
             $("#energyConsumptionContainer").text(value);
         });
     });
 });
+
+async function updateConsumption(currentConsumption, contract) {
+    return await contract.updateConsumption(currentConsumption);
+}
 
 async function getConsumption(deviceId, contract) {
     // Get the current value
