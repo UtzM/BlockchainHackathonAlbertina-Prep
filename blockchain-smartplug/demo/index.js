@@ -193,15 +193,7 @@ $(function () {
 
     // We connect to the Contract using a Provider, so we will only
     // have read-only access to the Contract
-    let contract = new ethers.Contract(contractAddress, abi, provider);
-
-    $("#update-button").click(function () {
-        updateConsumption(11, contract).then(value => {
-            log.info("Updated");
-            log.info(value);
-            debugger;
-        });
-    });
+    let contract = new ethers.Contract(contractAddress, abi, signer);
 
     getConsumption(deviceAddress, contract).then(value => {
         console.log(value);
