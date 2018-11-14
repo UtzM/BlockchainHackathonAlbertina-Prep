@@ -25,6 +25,25 @@ $(function () {
         },
         {
             "constant": true,
+            "inputs": [
+                {
+                    "name": "socketId",
+                    "type": "address"
+                }
+            ],
+            "name": "getConsumption",
+            "outputs": [
+                {
+                    "name": "",
+                    "type": "uint256"
+                }
+            ],
+            "payable": false,
+            "stateMutability": "view",
+            "type": "function"
+        },
+        {
+            "constant": true,
             "inputs": [],
             "name": "lsw",
             "outputs": [
@@ -86,6 +105,25 @@ $(function () {
             ],
             "payable": false,
             "stateMutability": "nonpayable",
+            "type": "function"
+        },
+        {
+            "constant": true,
+            "inputs": [
+                {
+                    "name": "socketId",
+                    "type": "address"
+                }
+            ],
+            "name": "getBalance",
+            "outputs": [
+                {
+                    "name": "",
+                    "type": "uint256"
+                }
+            ],
+            "payable": false,
+            "stateMutability": "view",
             "type": "function"
         },
         {
@@ -160,5 +198,5 @@ $(function () {
 
 async function getConsumption(deviceId, contract) {
     // Get the current value
-    return await contract.consumptions(deviceId);
+    return await contract.getBalance(deviceId);
 }
