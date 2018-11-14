@@ -38,7 +38,10 @@ contract L2 {
     LSW public lsw;
     uint public totalSupply_;
 
+    // Last stored power consumption for a given socket
     mapping(address => uint) consumptions;
+
+    // Total balance of credits for a given socket
     mapping(address => uint) balances;
 
     event PowerConsumption(address indexed sourceSocket, uint consumption, uint balance);
@@ -53,6 +56,16 @@ contract L2 {
     // Private methods
     function isNotNullAddress(address addr) internal pure returns (bool) {
         return !(addr == address(0));
+    }
+
+    function getConsumption(address socketId) public view returns (uint) {
+        require(isNotNullAddress(socketId));
+        return consumptions[socketId];
+    }
+
+    function getBalance(address socketId) public view returns (uint) {
+        require(isNotNullAddress(socketId));
+        return balances[socketId];
     }
 
     // Public functions (transactions)
