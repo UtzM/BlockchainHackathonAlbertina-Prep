@@ -193,7 +193,17 @@ $(function () {
     // have read-only access to the Contract
     let contract = new ethers.Contract(contractAddress, abi, provider);
 
-    console.log(getConsumption(deviceAddress, contract));
+    getConsumption(deviceAddress, contract).then(value => {
+        console.log(value);
+        $("#energyConsumptionContainer").text(value);
+    });
+
+    $("#refresh-button").click(function(){
+        getConsumption(deviceAddress, contract).then(value => {
+            console.log(value);
+            $("#energyConsumptionContainer").text(value);
+        });
+    });
 });
 
 async function getConsumption(deviceId, contract) {
