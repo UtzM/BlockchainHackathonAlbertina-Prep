@@ -32,11 +32,15 @@ class LWallet:
 
     def getConsumption(self, socketId):
         self._authorize()
-        return self.l.functions.getConsumption(socketId).transact({'from': self.account_addr})
+        m = self.l.functions.getConsumption(socketId)
+        print("getConsumption gas estimate: " + str(m.estimateGas()))
+        return m.transact({'from': self.account_addr})
 
     def updateConsumption(self, currentConsumption):
         self._authorize()
-        return self.l.functions.updateConsumption(currentConsumption).transact({'from': self.account_addr})
+        m = self.l.functions.updateConsumption(currentConsumption)
+        print("updateConsumption gas estimate: " + str(m.estimateGas()))
+        return m.transact({'from': self.account_addr})
 
 
 if __name__ == '__main__':
