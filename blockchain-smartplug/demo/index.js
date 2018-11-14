@@ -5,7 +5,7 @@ $(function () {
     let deviceWallet = new ethers.Wallet(key);
     const deviceAddress = deviceWallet.address;
 
-    console.log("Device wallet address: " + deviceWallet);
+    console.log("Device wallet address: " + deviceWallet.address);
 
     // The Contract interface
     const abi = [
@@ -187,7 +187,7 @@ $(function () {
     let provider = new ethers.providers.JsonRpcProvider("http://localhost:8545");
 
     // The address from the above deployment example
-    let contractAddress = "0x871749bFe9B225A728c6A83C8595550d2142952A";
+    let contractAddress = "0x78b3D69911fE61FD7FcdB869B79449175832422E";
 
     // We connect to the Contract using a Provider, so we will only
     // have read-only access to the Contract
