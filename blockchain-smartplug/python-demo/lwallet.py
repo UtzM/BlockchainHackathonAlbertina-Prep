@@ -1,8 +1,9 @@
-import web3
-from web3.auto import w3
+from web3 import Web3
 
 import os
 
+my_provider = Web3.IPCProvider("http://localhost:8545")
+w3 = Web3(my_provider)
 
 def _check_connection():
     if not w3.isConnected():
@@ -20,7 +21,7 @@ class LWallet:
             abi=contract_abi,
         )
 
-        self.account_addr = '0x9b4486BEC14ee60BF4738be06a23e12A76Cb724a'
+        self.account_addr = "0x9b4486BEC14ee60BF4738be06a23e12A76Cb724a"
         self.account_pwd = 'test'
 
         self._authorize()
@@ -31,7 +32,7 @@ class LWallet:
 
     def getConsumption(self, socketId):
         self._authorize()
-        return self.l.functions.socketUpdate(socketId).transact({'from': self.account_addr})
+        return self.l.functions.getConsumption(socketId).transact({'from': self.account_addr})
 
     def updateConsumption(self, currentConsumption):
         self._authorize()
