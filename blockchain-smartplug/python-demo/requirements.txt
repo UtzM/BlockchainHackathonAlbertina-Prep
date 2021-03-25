@@ -21,7 +21,7 @@ pycryptodome==3.6.4
 pyserial==3.4
 pyserial-asyncio==0.4
 pytz==2018.5
-PyYAML==3.13
+PyYAML==5.4
 pyHS100==0.3.3
 requests==2.19.1
 rlp==1.0.1
